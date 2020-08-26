@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>test1</title>
+  <meta name="renderer" content="webkit" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href=" ../static/dist/css/layui.css"  media="all">
+
+
+
+  <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+</head>
+
+<!--<blockquote class="layui-elem-quote layui-text">-->
+<!--  鉴于小伙伴的普遍反馈，先温馨提醒两个常见“问题”：1. <a href="/doc/base/faq.html#form" target="_blank">为什么select/checkbox/radio没显示？</a> 2. <a href="/doc/modules/form.html#render" target="_blank">动态添加的表单元素如何更新？</a>-->
+<!--</blockquote>-->
+
+
+<ul class="layui-nav" lay-filter="">
+  <li class="layui-nav-item layui-this"><a href="">HOME</a></li>
+  <li class="layui-nav-item"><a href="">                 </a></li><li class="layui-nav-item"><a href="">                 </a></li><li class="layui-nav-item"><a href="">                 </a></li><li class="layui-nav-item"><a href="">                 </a></li><li class="layui-nav-item"><a href="">                 </a></li><li class="layui-nav-item"><a href="">                 </a></li><li class="layui-nav-item"><a href="">                 </a></li><li class="layui-nav-item"><a href="">                 </a></li><li class="layui-nav-item"><a href="">                 </a></li>
+  <li class="layui-nav-item"><a href="https://keg.cs.tsinghua.edu.cn/cogdl/index.html">COGDL</a></li>
+  <li class="layui-nav-item"><a href="https://github.com/THUDM/cogdl">GITHUB</a></li>
+  <li class="layui-nav-item"><a href="https://github.com/THUDM/cogdl">MODEL</a></li>
+  <li class="layui-nav-item"><a href="https://github.com/THUDM/cogdl">DATASET</a></li>
+  <li class="layui-nav-item">
+    <a href="javascript:;">MORE</a>
+    <dl class="layui-nav-child"> <!-- 二级菜单 -->
+      <dd><a href="">1</a></dd>
+      <dd><a href="">2</a></dd>
+      <dd><a href="">3</a></dd>
+    </dl>
+  </li>
+</ul>
+</br>
+
+<img style="height: auto; width: auto\9; width:100%;" src="../static/cogdl.png">
+
+<div style="margin:0 100px; text-align:center;">
+  <fieldset class="layui-elem-field">
+    <legend style="font-family:verdana">What Can be Chosen</legend>
+    <div class="layui-field-box" style="font-family:verdana ">
+      click the following buttons to see more details
+    </div>
+  </fieldset>
+
+
+  <div class="layui-layer-btn1" id="layerDemo" style="   margin-bottom: 0;letter-spacing:50px;" >
+    <button data-method="setTop_Tasks" class="layui-btn  layui-btn-normal " >Tasks(Parallel)</button>
+    <button data-method="setTop_Datasets" class="layui-btn  layui-btn-normal ">Datasets</button>
+    <button data-method="setTop" class="layui-btn  layui-btn-normal ">Models</button>
+    <button data-method="setTop" class="layui-btn  layui-btn-normal ">Seeds</button>
+    <button data-method="setTop" class="layui-btn  layui-btn-normal ">Device</button>
+  </div>
+</div >
+
+
+</br>
+  <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px; margin:0 100px;">
+    <legend style="font-family:verdana">Training Settings</legend>
+    <hr class="layui-bg-blue">
+  </fieldset>
+</br></br>
+
+  <form class="layui-form layui-form-pane" method="post" action="" autocomplete="on"  style="margin:0 100px; ">
+
+    {% csrf_token %}
+  <div class="layui-row">
+    <div class="layui-col-xs6 layui-col-sm6 ">
+      <label class="layui-form-label" >Parallel</label>
+        <div class="layui-input-block width:300px" >
+          <input type="checkbox"  name="train" lay-skin="switch" lay-text="ON|OFF">
+            <div class="layui-inline">
+              <label class="layui-form-label" >Datasets</label>
+                <div class="layui-input-block">
+                    <input type="text" name="dataset" lay-verify="required" lay-reqtext="dataset must be chosen" placeholder="dataset" autocomplete="off" class="layui-input">
+      </div></div></div></div>
+</div>
+    <div class="layui-form-item" style="margin:20px 0;">
+      <label class="layui-form-label ">Tasks</label>
+    <div class="layui-input-block ">
+      <input type="text" name="tasks" lay-verify="required" lay-reqtext="tasks must be chosen" placeholder="tasks" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+
+
+    <div class="layui-form-item" style="margin:20px 0;">
+      <label class="layui-form-label ">Model</label>
+    <div class="layui-input-block ">
+      <input type="text" name="model" lay-verify="required" lay-reqtext="model must be chosen" placeholder="model" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label">Seeds</label>
+      <div class="layui-input-inline">
+        <input type="text" name="seeds" lay-verify="required|integer" placeholder="seeds number" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+    <div class="layui-inline">
+      <label class="layui-form-label">Device</label>
+      <div class="layui-input-inline">
+        <input type="text" name="device" placeholder="only parallel" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+  </div>
+
+      <button type="submit" value="Submit" lay-submit="" class="layui-btn layui-btn-lg layui-btn-normal " >Submit!</button>
+  </br> </br><hr class="layui-bg-blue"><hr class="layui-bg-blue">
+  </form>
+
+  <div style="margin:0 100px; text-align:center; ">
+  <fieldset class="layui-elem-field">
+
+    <pp>{{rlt}}  </br>  </br></pp>
+
+    <legend style="font-family:verdana" >Result</legend>
+  </fieldset>
+
+</div>
+
+
+
+
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+  <legend style="font-family:verdana">FAQ</legend>
+</fieldset>
+
+
+<div class="layui-collapse" lay-accordion="" >
+
+  <div class="layui-colla-item">
+    <h2 class="layui-colla-title">What is CogDL?</h2>
+    <div class="layui-colla-content layui-show">
+      <p>CogDL is a graph representation learning toolkit that allows researchers and developers to easily train and compare baseline or custom models for node classification, link prediction and other tasks on graphs.
+      <br>
+        It provides implementations of many popular models, including: non-GNN Baselines like Deepwalk, LINE, NetMF,  GNN Baselines like GCN, GAT, GraphSAGE.</p>
+    </div>
+  </div>
+  <div class="layui-colla-item">
+    <h2 class="layui-colla-title">Open an issue</h2>
+    <div class="layui-colla-content">
+      <p><b><a href="https://github.com/THUDM/cogdl/issues" target="_blank">https://github.com/THUDM/cogdl/issues</a></b></p>
+    </div>
+  </div>
+<!--  <div class="layui-colla-item">-->
+<!--    <h2 class="layui-colla-title">为什么前端工程师多不愿意用 Bootstrap 框架？</h2>-->
+<!--    <div class="layui-colla-content">-->
+<!--      <p>因为不适合。如果希望开发长期的项目或者制作产品类网站，那么就需要实现特定的设计，为了在维护项目中可以方便地按设计师要求快速修改样式，肯定会逐步编写出各种业务组件、工具类，相当于为项目自行开发一套框架。——来自知乎@Kayo</p>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="layui-colla-item">-->
+<!--    <h2 class="layui-colla-title">贤心是男是女？</h2>-->
+<!--    <div class="layui-colla-content">-->
+<!--      <p>man！ 所以这个问题不要再出现了。。。</p>-->
+<!--    </div>-->
+
+    </div>
+</div>
+
+
+
+
+<script src="../static/dist/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+
+
+layui.use(['element', 'layer'], function(){
+  var element = layui.element;
+  var layer = layui.layer;
+
+  //监听折叠
+  element.on('collapse(test)', function(data){
+    layer.msg('展开状态：'+ data.show);
+  });
+});
+
+layui.use('layer', function(){ //独立版的layer无需执行这一句
+  var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+
+  //触发事件
+  var active = {
+    setTop_Tasks: function(){
+      var that = this;
+      //多窗口模式，层叠置顶
+      layer.open({
+        type: 2 //此处以iframe举例
+        ,title: 'TIPS'
+        ,area: ['390px', '260px']
+        ,shade: 0
+        ,maxmin: true
+        ,offset: [ //为了演示，随机坐标
+          0.5*($(window).height()-300)
+          ,0.5*($(window).width()-390)
+        ]
+        ,content: "/tasks/"
+        ,btn: ['Ok'] //只是为了演示
+        ,btn2: function(){
+          layer.closeAll();
+        }
+
+        ,zIndex: layer.zIndex //重点1
+        ,success: function(layero){
+          layer.setTop(layero); //重点2
+        }
+      });
+    }
+    ,setTop_Datasets: function(){
+      var that = this;
+      //多窗口模式，层叠置顶
+      layer.open({
+        type: 2 //此处以iframe举例
+        ,title: 'TIPS'
+        ,area: ['390px', '260px']
+        ,shade: 0
+        ,maxmin: true
+        ,offset: [ //为了演示，随机坐标
+          0.5*($(window).height()-300)
+          ,0.5*($(window).width()-390)
+        ]
+        ,content: "/datasets/"
+        ,btn: ['Ok'] //只是为了演示
+        ,btn2: function(){
+          layer.closeAll();
+        }
+
+        ,zIndex: layer.zIndex //重点1
+        ,success: function(layero){
+          layer.setTop(layero); //重点2
+        }
+      });
+    }
+    ,offset: function(othis){
+      var type = othis.data('type')
+      ,text = othis.text();
+
+      layer.open({
+        type: 1
+        ,offset: type //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+        ,id: 'layerDemo'+type //防止重复弹出
+        ,content: '<div style="padding: 20px 100px;">'+ text +'</div>'
+        ,btn: '关闭全部'
+        ,btnAlign: 'c' //按钮居中
+        ,shade: 0 //不显示遮罩
+        ,yes: function(){
+          layer.closeAll();
+        }
+      });
+    }
+  };
+
+  $('#layerDemo .layui-btn').on('click', function(){
+    var othis = $(this), method = othis.data('method');
+    active[method] ? active[method].call(this, othis) : '';
+  });
+
+});
+layui.use(['form', 'layedit', 'laydate'], function(){
+  var form = layui.form
+  ,layer = layui.layer
+  ,layedit = layui.layedit
+  ,laydate = layui.laydate;
+
+  //日期
+  laydate.render({
+    elem: '#date'
+  });
+  laydate.render({
+    elem: '#date1'
+  });
+
+  //创建一个编辑器
+  var editIndex = layedit.build('LAY_demo_editor');
+
+  //自定义验证规则
+  form.verify({
+    integer: [/^\d*$/, "intiger only"],
+    title: function(value){
+      if(value.length < 5){
+        return '标题至少得5个字符啊';
+      }
+    }
+    ,pass: [
+      /^[\S]{6,12}$/
+      ,'密码必须6到12位，且不能出现空格'
+    ]
+    ,content: function(value){
+      layedit.sync(editIndex);
+    }
+  });
+
+  //监听指定开关
+  form.on('switch(switchTest)', function(data){
+    layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
+      offset: '6px'
+    });
+    layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+  });
+
+  //监听提交
+  form.on('submit(demo1)', function(data){
+    layer.alert(JSON.stringify(data.field), {
+      title: '最终的提交信息'
+    })
+    return false;
+  });
+
+  //表单赋值
+  layui.$('#LAY-component-form-setval').on('click', function(){
+    form.val('example', {
+      "username": "贤心" // "name": "value"
+      ,"password": "123456"
+      ,"interest": 1
+      ,"like[write]": true //复选框选中状态
+      ,"close": true //开关状态
+      ,"sex": "女"
+      ,"desc": "我爱 layui"
+    });
+  });
+
+  //表单取值
+  layui.$('#LAY-component-form-getval').on('click', function(){
+    var data = form.val('example');
+    alert(JSON.stringify(data));
+  });
+
+});
+</script>
+
+<style>
+pp{
+  white-space: pre-wrap;
+  font-family:Consolas;
+  margin:0 100px; text-align:center;
+}
+</style>
+
+</body>
+</html>
+

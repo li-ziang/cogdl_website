@@ -1,0 +1,8 @@
+sphinx
+sphinx_rtd_theme
+sphinx-markdown-tables
+recommonmark
+sphinx-autoapi
+black
+pytest
+coveralls

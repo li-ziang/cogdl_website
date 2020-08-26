@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+    <style>
+p {
+  white-space: pre-wrap;
+  font-family:Courier;
+}
+</style>
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+        trianmethod:<select name="train">
+        <option value="train">train</option>
+        <option value="parallel_train">parallel_train</option>
+        </select>
+        <br />
+
+        task:<select name="task">
+        <option value="link_prediction">link_prediction</option>
+        <option value="node_classification">node_classification</option>
+        <option value="unsupervised_node_classification">unsupervised_node_classification</option>
+        </select>
+        <br />
+
+
+        database:<select name="database">
+        <option value="flickr">flickr</option>
+        <option value="cora">cora</option>
+        <option value="citeseer">citeseer</option>
+        <option value="pumbed">pumbed</option>
+        <option value="PPI">PPI</option>
+        <option value="wikipedia">wikipedia</option>
+        <option value="blogcatalog">blogcatalog</option>
+        </select>
+        <br />
+
+
+        model:<select name="model">
+        <option value="gcn">gcn</option>
+        <option value="gat">gat</option>
+        <option value="graphsage">graphsage</option>
+        <option value="deepwalk">deepwalk</option>
+        <option value="node2vec">node2vec</option>
+        <option value="grarep">grarep</option>
+        <option value="netmf">netmf</option>
+        <option value="netsmf">netsmf</option>
+        <option value="prone">prone</option>
+        </select>
+        <br />
+        <input type="submit" value="Submit">
+    </form>
+
+    <p>{{rlt}}</p>
+</body>
+</html>
