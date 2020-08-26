@@ -21,14 +21,10 @@ from django.views.generic.base import TemplateView
 from django.http import HttpResponse
 from django.shortcuts import render,render_to_response
 
-from . import testdb,views,search,search2,test1
+from . import views,test1
 
 urlpatterns = [
     url(r'^tasks/', views.tasks),
-    url(r'^datasets/', views.datasets),
-    url(r'^testdb/',testdb.testdb),
-    url(r'^search-form$', search.search_form),
-    url(r'^search$', search.search),
-    url(r'^search-post$', search2.search_post),
+    url(r'^datasets/', views.tasks),#暂时用这个
     url(r'^test1$', test1.test1),
 ]
